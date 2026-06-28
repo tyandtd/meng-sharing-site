@@ -1,15 +1,15 @@
 :root {
   color-scheme: light;
-  --ink: #18211d;
-  --muted: #65706a;
-  --paper: #f8f6f1;
-  --surface: #ffffff;
-  --line: #d9ddd5;
-  --green: #1d5c4d;
-  --blue: #294a7a;
-  --clay: #b85b43;
-  --gold: #c99a3c;
-  --shadow: 0 18px 55px rgba(24, 33, 29, 0.14);
+  --ink: #25312b;
+  --muted: #728078;
+  --paper: #f7f2ea;
+  --surface: #fffdf8;
+  --line: #e5ddd0;
+  --green: #557667;
+  --blue: #6f8294;
+  --clay: #bc7a66;
+  --gold: #b89258;
+  --shadow: 0 14px 36px rgba(55, 48, 39, 0.08);
 }
 
 * {
@@ -56,7 +56,7 @@ a {
   min-height: 72px;
   padding: 0 32px;
   color: #fff;
-  background: linear-gradient(180deg, rgba(9, 17, 14, 0.78), rgba(9, 17, 14, 0));
+  background: linear-gradient(180deg, rgba(47, 58, 50, 0.66), rgba(47, 58, 50, 0.08));
 }
 
 .brand {
@@ -73,10 +73,10 @@ a {
 }
 
 .main-nav a {
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: 8px;
   padding: 7px 13px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 253, 248, 0.12);
   backdrop-filter: blur(14px);
 }
 
@@ -85,7 +85,7 @@ a {
   min-height: 78vh;
   overflow: hidden;
   color: #fff;
-  background: #17211d;
+  background: #e9dfd2;
 }
 
 .hero__image {
@@ -94,14 +94,17 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 48%;
+  filter: saturate(0.78) contrast(0.9) brightness(1.04);
+  transform: scale(1.012);
 }
 
 .hero__shade {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(6, 12, 10, 0.88), rgba(6, 12, 10, 0.54) 42%, rgba(6, 12, 10, 0.12)),
-    linear-gradient(0deg, rgba(6, 12, 10, 0.72), rgba(6, 12, 10, 0) 38%);
+    linear-gradient(90deg, rgba(45, 58, 49, 0.74), rgba(73, 88, 75, 0.4) 44%, rgba(247, 242, 234, 0.1)),
+    linear-gradient(0deg, rgba(45, 58, 49, 0.48), rgba(45, 58, 49, 0) 42%);
 }
 
 .hero__content {
@@ -137,7 +140,7 @@ a {
 .hero__lead {
   max-width: 620px;
   margin: 26px 0 0;
-  color: rgba(255, 255, 255, 0.86);
+  color: rgba(255, 253, 248, 0.88);
   font-size: 1.28rem;
 }
 
@@ -161,18 +164,18 @@ a {
 }
 
 .button:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .button--primary {
   background: var(--gold);
-  color: #211607;
+  color: #2d2213;
 }
 
 .button--light {
-  border: 1px solid rgba(255, 255, 255, 0.42);
+  border: 1px solid rgba(255, 253, 248, 0.5);
   color: #fff;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 253, 248, 0.12);
 }
 
 .section {
@@ -181,12 +184,12 @@ a {
 
 .section--intro {
   padding: 56px 0;
-  background: #fff;
+  background: #fffdf8;
   border-bottom: 1px solid var(--line);
 }
 
 .section--soft {
-  background: #eef3ee;
+  background: #edf2eb;
 }
 
 .intro-grid {
@@ -233,7 +236,7 @@ p {
 .text-link {
   color: var(--green);
   font-weight: 800;
-  border-bottom: 2px solid rgba(29, 92, 77, 0.3);
+  border-bottom: 2px solid rgba(85, 118, 103, 0.3);
 }
 
 .card-grid {
@@ -287,11 +290,11 @@ p {
 .split-list .split-link:hover,
 .split-list .split-link:focus-visible {
   transform: translateX(4px);
-  border-top-color: rgba(29, 92, 77, 0.42);
+  border-top-color: rgba(85, 118, 103, 0.42);
 }
 
 .split-list .split-link:focus-visible {
-  outline: 3px solid rgba(201, 154, 60, 0.42);
+  outline: 3px solid rgba(184, 146, 88, 0.38);
   outline-offset: 4px;
 }
 
@@ -302,7 +305,7 @@ p {
   height: 42px;
   border-radius: 50%;
   color: #fff;
-  background: var(--blue);
+  background: var(--green);
   font-weight: 800;
 }
 
@@ -318,8 +321,8 @@ p {
 
 .site-footer {
   padding: 30px 0;
-  color: rgba(255, 255, 255, 0.75);
-  background: #111815;
+  color: rgba(255, 253, 248, 0.78);
+  background: #2c3a32;
 }
 
 .footer-grid {
@@ -339,26 +342,26 @@ p {
 }
 
 .module-page {
-  background: #fbfaf7;
+  background: #fbf7ef;
 }
 
 .module-header {
   position: static;
   color: var(--ink);
-  background: rgba(248, 246, 241, 0.92);
+  background: rgba(255, 253, 248, 0.92);
   border-bottom: 1px solid var(--line);
 }
 
 .module-header .main-nav a {
   border-color: var(--line);
-  background: #fff;
+  background: #fffdf8;
 }
 
 .module-hero {
   padding: 76px 0 40px;
   background:
-    linear-gradient(120deg, rgba(29, 92, 77, 0.12), rgba(184, 91, 67, 0.1)),
-    #fbfaf7;
+    linear-gradient(120deg, rgba(85, 118, 103, 0.12), rgba(188, 122, 102, 0.08)),
+    #fbf7ef;
 }
 
 .module-hero p:last-child {
@@ -385,13 +388,13 @@ p {
 
 .article-card--link:hover,
 .article-card--link:focus-visible {
-  transform: translateY(-3px);
-  border-color: rgba(29, 92, 77, 0.42);
-  box-shadow: 0 22px 62px rgba(24, 33, 29, 0.18);
+  transform: translateY(-2px);
+  border-color: rgba(85, 118, 103, 0.42);
+  box-shadow: 0 18px 44px rgba(55, 48, 39, 0.11);
 }
 
 .article-card--link:focus-visible {
-  outline: 3px solid rgba(201, 154, 60, 0.42);
+  outline: 3px solid rgba(184, 146, 88, 0.38);
   outline-offset: 4px;
 }
 
@@ -413,7 +416,7 @@ p {
   margin-bottom: 22px;
   color: var(--green);
   font-weight: 800;
-  border-bottom: 2px solid rgba(29, 92, 77, 0.25);
+  border-bottom: 2px solid rgba(85, 118, 103, 0.25);
 }
 
 .article-detail h1 {
@@ -437,8 +440,8 @@ p {
 .article-detail code {
   border-radius: 6px;
   padding: 2px 5px;
-  color: #173027;
-  background: rgba(29, 92, 77, 0.1);
+  color: #304439;
+  background: rgba(85, 118, 103, 0.12);
   font-family: "Cascadia Code", Consolas, "Courier New", monospace;
   font-size: 0.92em;
 }
@@ -448,8 +451,8 @@ p {
   margin: 16px 0 0;
   border-radius: 8px;
   padding: 18px;
-  color: #eef7f2;
-  background: #15231f;
+  color: #edf6f0;
+  background: #28382f;
 }
 
 .article-detail pre code {
@@ -498,8 +501,8 @@ p {
 .study-note code {
   border-radius: 6px;
   padding: 2px 5px;
-  color: #173027;
-  background: rgba(29, 92, 77, 0.1);
+  color: #304439;
+  background: rgba(85, 118, 103, 0.12);
   font-family: "Cascadia Code", Consolas, "Courier New", monospace;
   font-size: 0.92em;
 }
@@ -509,8 +512,8 @@ p {
   margin: 16px 0 0;
   border-radius: 8px;
   padding: 18px;
-  color: #eef7f2;
-  background: #15231f;
+  color: #edf6f0;
+  background: #28382f;
 }
 
 .study-note pre code {
@@ -549,7 +552,7 @@ p {
   border-radius: 8px;
   padding: 3px 9px;
   color: var(--green);
-  background: rgba(29, 92, 77, 0.1);
+  background: rgba(85, 118, 103, 0.12);
   font-weight: 800;
 }
 
@@ -557,7 +560,7 @@ p {
   margin-top: 28px;
   border-left: 4px solid var(--clay);
   padding: 18px 22px;
-  background: #fff;
+  background: #fffdf8;
 }
 
 .note-band p {
@@ -587,8 +590,8 @@ p {
 
   .hero__shade {
     background:
-      linear-gradient(90deg, rgba(6, 12, 10, 0.88), rgba(6, 12, 10, 0.62)),
-      linear-gradient(0deg, rgba(6, 12, 10, 0.68), rgba(6, 12, 10, 0.05));
+      linear-gradient(90deg, rgba(45, 58, 49, 0.76), rgba(73, 88, 75, 0.56)),
+      linear-gradient(0deg, rgba(45, 58, 49, 0.5), rgba(45, 58, 49, 0.06));
   }
 
   .hero__content {
