@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="静态网站上线清单：从本地文件、Git 仓库、GitHub Pages 到公网链接的最小可行发布流程。">
+    <title>静态网站上线清单 | 技术分享 | Meng 的分享空间</title>
+    <link rel="stylesheet" href="../../styles.css">
+  </head>
+  <body class="module-page">
+    <header class="site-header module-header">
+      <a class="brand" href="../../">Meng</a>
+      <nav class="main-nav" aria-label="主导航">
+        <a href="../">技术分享</a>
+        <a href="../../words/">言语分享</a>
+        <a href="../../#about">关于</a>
+      </nav>
+    </header>
+
+    <main>
+      <article class="article-detail">
+        <div class="wrap article-wrap">
+          <a class="back-link" href="../">返回技术分享</a>
+          <div class="article-meta">
+            <span class="tag">工程实践</span>
+            <span>2026-06-28</span>
+          </div>
+          <h1>静态网站上线清单</h1>
+          <p class="note-lead">
+            这是一份最小可行发布流程：先把页面做出来，放进 Git 仓库，推到 GitHub，再用 GitHub Pages 获得公网访问地址。
+          </p>
+
+          <section>
+            <h2>目标</h2>
+            <p>用最少的工程复杂度，让个人网站可以被真实访问。这个阶段不急着引入框架、构建工具或后台服务，先把内容入口立起来。</p>
+          </section>
+
+          <section>
+            <h2>文件准备</h2>
+            <ul>
+              <li><code>index.html</code> 作为首页。</li>
+              <li><code>styles.css</code> 统一管理视觉样式。</li>
+              <li><code>tech/</code> 和 <code>words/</code> 分别承载两个内容模块。</li>
+              <li><code>assets/</code> 放图片等静态资源。</li>
+              <li><code>.nojekyll</code> 让 GitHub Pages 按普通静态站点处理文件。</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>首次发布命令</h2>
+            <pre><code>git status
+git add .
+git commit -m "Initial personal sharing site"
+gh repo create meng-sharing-site --public --source=. --remote=origin --push</code></pre>
+            <p>仓库创建并推送成功后，再启用 Pages，从 <code>main</code> 分支根目录发布。</p>
+            <pre><code>gh api --method POST "repos/tyandtd/meng-sharing-site/pages" -F "source[branch]=main" -F "source[path]=/"</code></pre>
+          </section>
+
+          <section>
+            <h2>验证</h2>
+            <p>发布完成后，需要确认主页、子页面和图片资源都能返回 <code>200 OK</code>。</p>
+            <pre><code>curl.exe -I https://tyandtd.github.io/meng-sharing-site/
+curl.exe -I https://tyandtd.github.io/meng-sharing-site/tech/
+curl.exe -I https://tyandtd.github.io/meng-sharing-site/words/</code></pre>
+          </section>
+
+          <section>
+            <h2>以后更新</h2>
+            <p>后续不需要重新创建仓库，只要提交并推送改动，GitHub Pages 会自动重新部署。</p>
+            <pre><code>git status
+git add .
+git commit -m "Update site content"
+git push</code></pre>
+          </section>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-grid">
+        <p>© 2026 Meng. Built with GitHub Pages.</p>
+        <div class="footer-links">
+          <a href="../">技术分享</a>
+          <a href="../../">首页</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

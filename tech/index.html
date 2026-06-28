@@ -31,127 +31,42 @@
       <section class="section">
         <div class="wrap">
           <div class="article-grid">
-            <article class="article-card">
+            <a class="article-card article-card--link" href="./static-site-launch/">
               <div class="article-meta">
                 <span class="tag">工程实践</span>
                 <span>2026-06-28</span>
               </div>
               <h3>静态网站上线清单</h3>
               <p>从本地文件、Git 仓库、GitHub Pages 到公网链接，记录一次最小可行发布流程。</p>
-            </article>
-            <article class="article-card">
+            </a>
+            <a class="article-card article-card--link" href="./dev-tools-config/">
               <div class="article-meta">
                 <span class="tag">工具链</span>
                 <span>待更新</span>
               </div>
               <h3>常用开发工具配置</h3>
               <p>把编辑器、命令行、依赖管理、部署工具整理成可复用的配置笔记。</p>
-            </article>
-            <article class="article-card">
+            </a>
+            <a class="article-card article-card--link" href="./github-cli-network/">
               <div class="article-meta">
                 <span class="tag">学习笔记</span>
                 <span>2026-06-28</span>
               </div>
               <h3>GitHub CLI 连接不上 API 的排查记录</h3>
               <p>浏览器显示设备授权成功，但命令行仍然连不上 GitHub API：记录这次从现象到修复的完整路径。</p>
-            </article>
-            <article class="article-card">
+            </a>
+            <a class="article-card article-card--link" href="./project-decisions/">
               <div class="article-meta">
                 <span class="tag">项目复盘</span>
                 <span>待更新</span>
               </div>
               <h3>一次项目的关键决策</h3>
               <p>记录目标、约束、方案取舍和结果，让复盘可以真正帮到下一次行动。</p>
-            </article>
+            </a>
           </div>
 
-          <article class="study-note" id="github-cli-network">
-            <div class="article-meta">
-              <span class="tag">学习笔记</span>
-              <span>2026-06-28</span>
-            </div>
-            <h2>GitHub CLI 连接不上 API 的排查记录</h2>
-            <p class="note-lead">
-              这次问题的表面现象很迷惑：浏览器里的 GitHub Device Login 已经显示成功，但命令行里的
-              <code>gh</code> 仍然报错，无法完成认证。
-            </p>
-
-            <section>
-              <h3>现象</h3>
-              <p>
-                浏览器页面提示 <strong>Congratulations, you're all set.</strong>，但终端里出现类似错误：
-              </p>
-              <pre><code>failed to authenticate via web browser:
-Post "https://api.github.com/graphql":
-dial tcp 20.205.243.168:443: connectex: A connection attempt failed</code></pre>
-              <p>
-                关键点是：浏览器授权成功，只说明 GitHub 网页端接受了这次设备授权；它不等于
-                <code>gh</code> 已经成功访问 API 并把 token 写入本机。
-              </p>
-            </section>
-
-            <section>
-              <h3>排查顺序</h3>
-              <ol>
-                <li>先用 <code>gh auth status</code> 确认 CLI 是否真的登录成功。</li>
-                <li>再分别测试 <code>github.com</code> 和 <code>api.github.com</code>，因为网页能打开不代表 API 能连通。</li>
-                <li>检查命令行有没有代理配置：环境变量、Git 代理、WinHTTP 代理。</li>
-                <li>查本地是否有代理端口在监听，本次发现的是 <code>127.0.0.1:7897</code>。</li>
-              </ol>
-
-              <pre><code>gh auth status
-curl.exe -I https://github.com
-curl.exe -I https://api.github.com
-git config --global --get-regexp "^(http|https)\.proxy$"
-netsh winhttp show proxy</code></pre>
-            </section>
-
-            <section>
-              <h3>本次根因</h3>
-              <p>
-                浏览器能打开 GitHub，是因为浏览器有自己的网络通道；但命令行里的 <code>gh</code> 和
-                <code>curl</code> 没有自动走同一个代理，所以直连 <code>api.github.com:443</code> 超时。
-              </p>
-            </section>
-
-            <section>
-              <h3>修复方法</h3>
-              <p>在当前 PowerShell 里先给命令行设置临时代理，再刷新 GitHub CLI 登录：</p>
-              <pre><code>$env:HTTPS_PROXY='http://127.0.0.1:7897'
-$env:HTTP_PROXY='http://127.0.0.1:7897'
-
-gh auth refresh -h github.com --reset-scopes
-gh auth status</code></pre>
-              <p>如果是第一次登录，可以改用：</p>
-              <pre><code>gh auth login --hostname github.com --git-protocol https --web</code></pre>
-              <p>
-                如果最后提示 <code>hosts.yml: Access is denied</code>，说明 GitHub CLI 没有权限写入本机凭据文件，
-                需要换一个有写入权限的终端重新执行认证。
-              </p>
-            </section>
-
-            <section>
-              <h3>以后更新网站</h3>
-              <p>认证和远端仓库配置好之后，日常更新只需要改文件、提交、推送：</p>
-              <pre><code>git status
-git add .
-git commit -m "Update site notes"
-git push</code></pre>
-            </section>
-
-            <section>
-              <h3>记住这几个判断</h3>
-              <ul>
-                <li>浏览器成功页不等于 <code>gh</code> 登录成功，最终以 <code>gh auth status</code> 为准。</li>
-                <li><code>github.com</code> 能访问，不代表 <code>api.github.com</code> 能访问。</li>
-                <li>浏览器会走代理，不代表命令行会自动走代理。</li>
-                <li>遇到 GitHub CLI 网络问题，先查 API 连通性，再查代理。</li>
-              </ul>
-            </section>
-          </article>
-
           <div class="note-band">
-            <p>新增文章时，可以复制一个卡片，修改分类、日期、标题和摘要；如果文章变多，再拆成独立 Markdown 或 HTML 页面。</p>
+            <p>新增文章时，可以复制一张卡片并创建对应详情页；列表页负责索引，详情页负责沉淀完整记录。</p>
           </div>
         </div>
       </section>
