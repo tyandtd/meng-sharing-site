@@ -47,6 +47,28 @@
           </section>
 
           <section>
+            <h2>从卡片到详情页</h2>
+            <p>
+              内容变多之后，首页和模块页不适合堆完整正文。更清楚的做法是：首页放精选入口，模块页放文章索引，详情页沉淀完整笔记。
+            </p>
+            <ul>
+              <li>首页技术卡片直接链接到 <code>tech/static-site-launch/</code>、<code>tech/github-cli-network/</code> 等详情页。</li>
+              <li>首页言语条目链接到 <code>words/sentence-weight/</code>、<code>words/reading-aftertaste/</code>、<code>words/communication-details/</code>。</li>
+              <li>技术分享页和言语分享页都只保留可点击卡片，正文放到各自的 <code>index.html</code> 详情页中。</li>
+              <li>详情页统一使用 <code>../../styles.css</code>，并提供“返回技术分享”或“返回言语分享”的入口。</li>
+            </ul>
+            <pre><code>tech/
+  index.html
+  static-site-launch/index.html
+  github-cli-network/index.html
+
+words/
+  index.html
+  sentence-weight/index.html
+  reading-aftertaste/index.html</code></pre>
+          </section>
+
+          <section>
             <h2>首次发布命令</h2>
             <pre><code>git status
 git add .
@@ -61,7 +83,9 @@ gh repo create meng-sharing-site --public --source=. --remote=origin --push</cod
             <p>发布完成后，需要确认主页、子页面和图片资源都能返回 <code>200 OK</code>。</p>
             <pre><code>curl.exe -I https://tyandtd.github.io/meng-sharing-site/
 curl.exe -I https://tyandtd.github.io/meng-sharing-site/tech/
-curl.exe -I https://tyandtd.github.io/meng-sharing-site/words/</code></pre>
+curl.exe -I https://tyandtd.github.io/meng-sharing-site/words/
+curl.exe -I https://tyandtd.github.io/meng-sharing-site/tech/static-site-launch/
+curl.exe -I https://tyandtd.github.io/meng-sharing-site/words/sentence-weight/</code></pre>
           </section>
 
           <section>
