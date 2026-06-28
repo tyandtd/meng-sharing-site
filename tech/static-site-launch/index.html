@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="静态网站上线清单：从本地文件、Git 仓库、GitHub Pages 到公网链接的最小可行发布流程。">
-    <title>静态网站上线清单 | 技术分享 | Meng 的分享空间</title>
+    <meta name="description" content="静态网站上线清单：从本地文件、Git 仓库、GitHub Pages 到自定义域名的最小可行发布流程。">
+    <title>静态网站上线清单 | 技术分享 | 萌 的分享空间</title>
     <link rel="stylesheet" href="../../styles.css">
   </head>
   <body class="module-page">
     <header class="site-header module-header">
-      <a class="brand" href="../../">Meng</a>
+      <a class="brand" href="../../">萌</a>
       <nav class="main-nav" aria-label="主导航">
         <a href="../">技术分享</a>
         <a href="../../words/">言语分享</a>
@@ -27,7 +27,7 @@
           </div>
           <h1>静态网站上线清单</h1>
           <p class="note-lead">
-            这是一份最小可行发布流程：先把页面做出来，放进 Git 仓库，推到 GitHub，再用 GitHub Pages 获得公网访问地址。
+            这是一份最小可行发布流程：先把页面做出来，放进 Git 仓库，推到 GitHub，再用 GitHub Pages 和自定义域名获得公网访问地址。
           </p>
 
           <section>
@@ -79,13 +79,40 @@ gh repo create meng-sharing-site --public --source=. --remote=origin --push</cod
           </section>
 
           <section>
+            <h2>绑定自定义域名</h2>
+            <p>
+              默认的 GitHub Pages 地址跑通后，再把购买好的 <code>caojiameng.love</code> 绑定到站点。这个过程分为仓库声明、GitHub Pages 设置、域名解析和验证四步。
+            </p>
+            <ul>
+              <li>在仓库根目录添加 <code>CNAME</code> 文件，内容只写 <code>caojiameng.love</code>。</li>
+              <li>在 GitHub 仓库的 <code>Settings -> Pages -> Custom domain</code> 中填写 <code>caojiameng.love</code> 并保存。</li>
+              <li>在域名服务商的“解析设置”里添加根域名的 <code>A</code> 记录，主机记录是 <code>@</code>，分别指向 GitHub Pages 的四个 IP。</li>
+              <li>给 <code>www</code> 添加一条 <code>CNAME</code> 记录，记录值写 <code>tyandtd.github.io</code>，不要加 <code>https://</code> 或仓库路径。</li>
+              <li>按 GitHub 的提示添加 <code>TXT</code> 验证记录，用来证明域名所有权。</li>
+              <li>DNS 生效后，确认 <code>http://caojiameng.love/</code> 和 <code>https://caojiameng.love/</code> 都能访问；证书正常后再开启 <code>Enforce HTTPS</code>。</li>
+            </ul>
+            <pre><code>CNAME
+caojiameng.love
+
+A     @     185.199.108.153
+A     @     185.199.109.153
+A     @     185.199.110.153
+A     @     185.199.111.153
+CNAME www   tyandtd.github.io
+
+TXT   _github-pages-challenge-tyandtd   bed0cc11d67b647e43836a32621da0</code></pre>
+          </section>
+
+          <section>
             <h2>验证</h2>
             <p>发布完成后，需要确认主页、子页面和图片资源都能返回 <code>200 OK</code>。</p>
             <pre><code>curl.exe -I https://tyandtd.github.io/meng-sharing-site/
 curl.exe -I https://tyandtd.github.io/meng-sharing-site/tech/
 curl.exe -I https://tyandtd.github.io/meng-sharing-site/words/
 curl.exe -I https://tyandtd.github.io/meng-sharing-site/tech/static-site-launch/
-curl.exe -I https://tyandtd.github.io/meng-sharing-site/words/sentence-weight/</code></pre>
+curl.exe -I https://tyandtd.github.io/meng-sharing-site/words/sentence-weight/
+curl.exe -I http://caojiameng.love/
+curl.exe -I https://caojiameng.love/</code></pre>
           </section>
 
           <section>
@@ -102,7 +129,7 @@ git push</code></pre>
 
     <footer class="site-footer">
       <div class="wrap footer-grid">
-        <p>© 2026 Meng. Built with GitHub Pages.</p>
+        <p>© 2026 萌. Built with GitHub Pages.</p>
         <div class="footer-links">
           <a href="../">技术分享</a>
           <a href="../../">首页</a>
