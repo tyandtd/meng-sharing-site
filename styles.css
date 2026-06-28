@@ -55,8 +55,8 @@ a {
   gap: 24px;
   min-height: 72px;
   padding: 0 32px;
-  color: #fff;
-  background: linear-gradient(180deg, rgba(47, 58, 50, 0.66), rgba(47, 58, 50, 0.08));
+  color: var(--ink);
+  background: linear-gradient(180deg, rgba(255, 253, 248, 0.84), rgba(255, 253, 248, 0.18));
 }
 
 .brand {
@@ -73,10 +73,10 @@ a {
 }
 
 .main-nav a {
-  border: 1px solid rgba(255, 255, 255, 0.24);
+  border: 1px solid rgba(85, 118, 103, 0.2);
   border-radius: 8px;
   padding: 7px 13px;
-  background: rgba(255, 253, 248, 0.12);
+  background: rgba(255, 253, 248, 0.38);
   backdrop-filter: blur(14px);
 }
 
@@ -84,8 +84,8 @@ a {
   position: relative;
   min-height: 78vh;
   overflow: hidden;
-  color: #fff;
-  background: #e9dfd2;
+  color: var(--ink);
+  background: #eceae6;
 }
 
 .hero__image {
@@ -95,16 +95,15 @@ a {
   height: 100%;
   object-fit: cover;
   object-position: center 48%;
-  filter: saturate(0.78) contrast(0.9) brightness(1.04);
-  transform: scale(1.012);
+  filter: saturate(0.92) contrast(0.98) brightness(1.02);
 }
 
 .hero__shade {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(45, 58, 49, 0.74), rgba(73, 88, 75, 0.4) 44%, rgba(247, 242, 234, 0.1)),
-    linear-gradient(0deg, rgba(45, 58, 49, 0.48), rgba(45, 58, 49, 0) 42%);
+    linear-gradient(90deg, rgba(247, 242, 234, 0.92), rgba(247, 242, 234, 0.66) 44%, rgba(247, 242, 234, 0.08)),
+    linear-gradient(0deg, rgba(247, 242, 234, 0.4), rgba(247, 242, 234, 0) 48%);
 }
 
 .hero__content {
@@ -140,7 +139,7 @@ a {
 .hero__lead {
   max-width: 620px;
   margin: 26px 0 0;
-  color: rgba(255, 253, 248, 0.88);
+  color: #5f6c64;
   font-size: 1.28rem;
 }
 
@@ -173,9 +172,9 @@ a {
 }
 
 .button--light {
-  border: 1px solid rgba(255, 253, 248, 0.5);
-  color: #fff;
-  background: rgba(255, 253, 248, 0.12);
+  border: 1px solid rgba(85, 118, 103, 0.36);
+  color: var(--green);
+  background: rgba(255, 253, 248, 0.5);
 }
 
 .section {
@@ -590,12 +589,16 @@ p {
 
   .hero__shade {
     background:
-      linear-gradient(90deg, rgba(45, 58, 49, 0.76), rgba(73, 88, 75, 0.56)),
-      linear-gradient(0deg, rgba(45, 58, 49, 0.5), rgba(45, 58, 49, 0.06));
+      linear-gradient(90deg, rgba(247, 242, 234, 0.9), rgba(247, 242, 234, 0.64)),
+      linear-gradient(0deg, rgba(247, 242, 234, 0.4), rgba(247, 242, 234, 0.06));
   }
 
   .hero__content {
     padding-top: 136px;
+  }
+
+  .hero__image {
+    object-position: 72% center;
   }
 
   .hero h1 {
