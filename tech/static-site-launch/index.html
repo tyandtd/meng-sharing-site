@@ -73,46 +73,46 @@ words/
             <pre><code>git status
 git add .
 git commit -m "Initial personal sharing site"
-gh repo create meng-sharing-site --public --source=. --remote=origin --push</code></pre>
+gh repo create 个人仓库名 --public --source=. --remote=origin --push</code></pre>
             <p>仓库创建并推送成功后，再启用 Pages，从 <code>main</code> 分支根目录发布。</p>
-            <pre><code>gh api --method POST "repos/tyandtd/meng-sharing-site/pages" -F "source[branch]=main" -F "source[path]=/"</code></pre>
+            <pre><code>gh api --method POST "repos/你的用户名/个人仓库名/pages" -F "source[branch]=main" -F "source[path]=/"</code></pre>
           </section>
 
           <section>
             <h2>绑定自定义域名</h2>
             <p>
-              默认的 GitHub Pages 地址跑通后，再把购买好的 <code>caojiameng.love</code> 绑定到站点。这个过程分为仓库声明、GitHub Pages 设置、域名解析和验证四步。
+              默认的 GitHub Pages 地址跑通后，再把购买好的 <code>个人的url</code> 绑定到站点。这个过程分为仓库声明、GitHub Pages 设置、域名解析和验证四步。为了避免在公开笔记中暴露真实域名，本文统一用 <code>个人的url</code> 代替。
             </p>
             <ul>
-              <li>在仓库根目录添加 <code>CNAME</code> 文件，内容只写 <code>caojiameng.love</code>。</li>
-              <li>在 GitHub 仓库的 <code>Settings -> Pages -> Custom domain</code> 中填写 <code>caojiameng.love</code> 并保存。</li>
+              <li>在仓库根目录添加 <code>CNAME</code> 文件，内容只写 <code>个人的url</code>。</li>
+              <li>在 GitHub 仓库的 <code>Settings -> Pages -> Custom domain</code> 中填写 <code>个人的url</code> 并保存。</li>
               <li>在域名服务商的“解析设置”里添加根域名的 <code>A</code> 记录，主机记录是 <code>@</code>，分别指向 GitHub Pages 的四个 IP。</li>
-              <li>给 <code>www</code> 添加一条 <code>CNAME</code> 记录，记录值写 <code>tyandtd.github.io</code>，不要加 <code>https://</code> 或仓库路径。</li>
+              <li>给 <code>www</code> 添加一条 <code>CNAME</code> 记录，记录值写 <code>个人的url</code>，不要加 <code>https://</code> 或仓库路径。</li>
               <li>按 GitHub 的提示添加 <code>TXT</code> 验证记录，用来证明域名所有权。</li>
-              <li>DNS 生效后，确认 <code>http://caojiameng.love/</code> 和 <code>https://caojiameng.love/</code> 都能访问；证书正常后再开启 <code>Enforce HTTPS</code>。</li>
+              <li>DNS 生效后，确认 <code>http://个人的url/</code> 和 <code>https://个人的url/</code> 都能访问；证书正常后再开启 <code>Enforce HTTPS</code>。</li>
             </ul>
             <pre><code>CNAME
-caojiameng.love
+个人的url
 
 A     @     185.199.108.153
 A     @     185.199.109.153
 A     @     185.199.110.153
 A     @     185.199.111.153
-CNAME www   tyandtd.github.io
+CNAME www   个人的url
 
-TXT   _github-pages-challenge-tyandtd   bed0cc11d67b647e43836a32621da0</code></pre>
+TXT   _github-pages-challenge-你的用户名   个人的验证码</code></pre>
           </section>
 
           <section>
             <h2>验证</h2>
             <p>发布完成后，需要确认主页、子页面和图片资源都能返回 <code>200 OK</code>。</p>
-            <pre><code>curl.exe -I https://tyandtd.github.io/meng-sharing-site/
-curl.exe -I https://tyandtd.github.io/meng-sharing-site/tech/
-curl.exe -I https://tyandtd.github.io/meng-sharing-site/words/
-curl.exe -I https://tyandtd.github.io/meng-sharing-site/tech/static-site-launch/
-curl.exe -I https://tyandtd.github.io/meng-sharing-site/words/sentence-weight/
-curl.exe -I http://caojiameng.love/
-curl.exe -I https://caojiameng.love/</code></pre>
+            <pre><code>curl.exe -I https://个人的url/
+curl.exe -I https://个人的url/tech/
+curl.exe -I https://个人的url/words/
+curl.exe -I https://个人的url/tech/static-site-launch/
+curl.exe -I https://个人的url/words/sentence-weight/
+curl.exe -I http://个人的url/
+curl.exe -I https://个人的url/</code></pre>
           </section>
 
           <section>

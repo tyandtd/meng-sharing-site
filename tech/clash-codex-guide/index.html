@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Clash 与 Codex 使用教程：从代理工具安装、订阅导入、代理模式选择到 Codex 客户端和 VS Code 插件使用。">
+    <title>Clash 与 Codex 使用教程 | 技术分享 | 萌 的分享空间</title>
+    <link rel="stylesheet" href="../../styles.css">
+  </head>
+  <body class="module-page">
+    <header class="site-header module-header">
+      <a class="brand" href="../../">萌</a>
+      <nav class="main-nav" aria-label="主导航">
+        <a href="../">技术分享</a>
+        <a href="../../words/">言语分享</a>
+        <a href="../../#about">关于</a>
+      </nav>
+    </header>
+
+    <main>
+      <article class="article-detail">
+        <div class="wrap article-wrap">
+          <a class="back-link" href="../">返回技术分享</a>
+          <div class="article-meta">
+            <span class="tag">工具教程</span>
+            <span>2026-06-28</span>
+          </div>
+          <h1>Clash 与 Codex 使用教程</h1>
+          <p class="note-lead">
+            这篇笔记整理自本地 Word 教程，保留可复用的操作流程；其中订阅地址、账号、密码和私人网址都已脱敏，用 <code>个人的url</code> 或占位文字代替。
+          </p>
+
+          <section>
+            <h2>准备 Clash Verge</h2>
+            <p>
+              如果电脑上已经有可用的 Clash 客户端，可以跳过安装部分。没有的话，可以到 Clash Verge Rev 的发布页面下载客户端。
+            </p>
+            <ul>
+              <li>优先下载适合当前系统的安装包或压缩包。</li>
+              <li>如果使用压缩包，解压后一般就可以打开使用。</li>
+              <li>如果使用安装包，按提示安装完成后启动客户端。</li>
+              <li>版本选择上，可以优先使用自己长期稳定的版本；不要频繁更换正在正常工作的版本。</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>导入订阅</h2>
+            <p>
+              打开客户端后，进入“订阅”或“配置”页面，把服务商提供的订阅链接粘贴进去。原文里的真实订阅地址包含 token，不能公开发布，这里统一写成占位格式。
+            </p>
+            <pre><code>订阅地址 1：个人的url
+订阅地址 2：个人的url
+订阅地址 3：个人的url</code></pre>
+            <p>
+              添加订阅后，点击更新或刷新，客户端会拉取节点列表。节点出现后，再进入“代理”页面选择具体节点。
+            </p>
+          </section>
+
+          <section>
+            <h2>选择节点和模式</h2>
+            <p>
+              节点选择可以先从延迟较低、连接稳定的地区开始测试。原文里提到日常会优先选择日本节点，这是一个常见选择，但最终以自己网络环境的实际速度为准。
+            </p>
+            <ul>
+              <li><strong>规则模式：</strong>按规则分流，常见网页和应用会根据规则决定是否走代理。</li>
+              <li><strong>全局模式：</strong>大部分网页和应用都会走代理。使用 Codex、GitHub CLI 或其他开发工具遇到网络问题时，可以优先尝试这个模式。</li>
+              <li><strong>直连模式：</strong>不走代理，适合临时排查代理是否影响网络。</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>打开系统代理</h2>
+            <p>
+              进入设置页面，把“服务模式”和“系统代理”打开。这样浏览器、部分桌面应用和命令行工具才更容易使用到代理网络。
+            </p>
+            <p>
+              有时电脑在 Clash 开启状态下关机，重启后如果没有打开 Clash，可能会出现网络访问异常。解决办法是重新打开 Clash，或者开启客户端的开机自启动。
+            </p>
+          </section>
+
+          <section>
+            <h2>让命令行也走代理</h2>
+            <p>
+              浏览器能访问外网，不代表 PowerShell、Git 或 GitHub CLI 一定能访问外网。遇到命令行网络问题时，可以先给当前终端设置临时代理。
+            </p>
+            <pre><code>$env:HTTPS_PROXY='个人的url'
+$env:HTTP_PROXY='个人的url'</code></pre>
+            <p>
+              这里的 <code>个人的url</code> 可以替换成自己的本地代理地址，例如本机代理端口。只在当前终端窗口里设置，关闭窗口后会失效。
+            </p>
+          </section>
+
+          <section>
+            <h2>使用 Codex</h2>
+            <p>使用 Codex 通常有两种方式，可以按自己的习惯选择。</p>
+            <ul>
+              <li><strong>Codex 客户端：</strong>到 Codex 官方页面下载客户端，登录后在对话里说明项目文件位置，让它协助阅读、修改和运行项目。</li>
+              <li><strong>VS Code 插件：</strong>在 VS Code 扩展市场安装 Codex 插件，打开侧边栏后，可以把当前项目或选中的文件加入对话上下文。</li>
+            </ul>
+            <p>
+              两种方式可以使用同一个账号登录。原文中的邮箱和密码属于私人凭据，不能写进公开网页；这里只记录为 <code>个人账号</code> 和 <code>个人密码</code>。
+            </p>
+          </section>
+
+          <section>
+            <h2>隐私提醒</h2>
+            <ul>
+              <li>订阅链接通常包含 token，不要发到公开仓库、网页或截图里。</li>
+              <li>账号和密码不要写进教程、代码、README 或聊天记录。</li>
+              <li>截图发布前要检查侧边栏、订阅列表、节点名称和登录信息。</li>
+              <li>教程里需要说明地址时，用 <code>个人的url</code> 这样的占位符替代真实值。</li>
+            </ul>
+          </section>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-grid">
+        <p>© 2026 萌. Built with GitHub Pages.</p>
+        <div class="footer-links">
+          <a href="../">技术分享</a>
+          <a href="../../">首页</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
