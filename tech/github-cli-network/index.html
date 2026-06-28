@@ -51,7 +51,7 @@ dial tcp 20.205.243.168:443: connectex: A connection attempt failed</code></pre>
               <li>先用 <code>gh auth status</code> 确认 CLI 是否真的登录成功。</li>
               <li>再分别测试 <code>github.com</code> 和 <code>api.github.com</code>，因为网页能打开不代表 API 能连通。</li>
               <li>检查命令行有没有代理配置：环境变量、Git 代理、WinHTTP 代理。</li>
-              <li>查本地是否有代理端口在监听，本次发现的是 <code>127.0.0.1:7897</code>。</li>
+              <li>查本地是否有代理端口在监听，公开笔记中用 <code>个人的url</code> 代替真实本地代理地址。</li>
             </ol>
 
             <pre><code>gh auth status
@@ -72,8 +72,8 @@ netsh winhttp show proxy</code></pre>
           <section>
             <h2>修复方法</h2>
             <p>在当前 PowerShell 里先给命令行设置临时代理，再刷新 GitHub CLI 登录：</p>
-            <pre><code>$env:HTTPS_PROXY='http://127.0.0.1:7897'
-$env:HTTP_PROXY='http://127.0.0.1:7897'
+            <pre><code>$env:HTTPS_PROXY='个人的url'
+$env:HTTP_PROXY='个人的url'
 
 gh auth refresh -h github.com --reset-scopes
 gh auth status</code></pre>
