@@ -13,7 +13,7 @@ window.MENG_SITE_INDEX = [
     section: "技术分享",
     tags: ["技术", "工程实践", "学习笔记", "项目复盘", "工具链"],
     summary: "技术分享模块用于放项目经验、学习路线、工具配置、代码片段和复盘文章。",
-    content: "技术分享目前包含静态网站上线清单、常用开发工具配置、GitHub CLI 网络排查、Clash 与 Codex 使用教程、项目关键决策等内容。"
+    content: "技术分享目前包含静态网站上线清单、常用开发工具配置、VS Code 中使用 LaTeX、GitHub CLI 网络排查、Clash 与 Codex 使用教程、项目关键决策等内容。"
   },
   {
     title: "静态网站上线清单",
@@ -30,6 +30,14 @@ window.MENG_SITE_INDEX = [
     tags: ["GitHub CLI", "gh", "API", "代理", "网络排查", "命令行"],
     summary: "浏览器设备授权成功，但命令行仍然连不上 GitHub API 时的判断和修复记录。",
     content: "文章记录了 gh auth status、curl api.github.com、Git 代理、WinHTTP 代理、本地代理端口等排查顺序。根因是浏览器能走代理，但 gh 和 curl 没有自动走同一个代理，导致 api.github.com 连接超时。"
+  },
+  {
+    title: "怎么在 VS Code 中使用 LaTeX",
+    url: "./tech/latex-vscode/",
+    section: "技术分享",
+    tags: ["LaTeX", "VS Code", "TeX Live", "LaTeX Workshop", "xelatex", "BibTeX", "学习笔记"],
+    summary: "从安装 TeX Live、验证 xelatex，到 VS Code 插件和 LaTeX Workshop 编译配方配置。",
+    content: "文章整理了在 VS Code 中使用 LaTeX 的完整流程：下载并安装 TeX Live，使用 xelatex -v 验证安装，安装 LaTeX 语法插件、LaTeX Workshop 和 Codex 插件，打开 settings.json 配置 xelatex、pdflatex、latexmk、bibtex 以及常用编译配方。"
   },
   {
     title: "Clash 与 Codex 使用教程",

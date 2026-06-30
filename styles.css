@@ -505,6 +505,30 @@ p {
   box-shadow: 0 10px 26px rgba(70, 53, 38, 0.08);
 }
 
+.article-figure {
+  margin: 18px 0 0;
+}
+
+.article-figure--narrow {
+  max-width: 520px;
+}
+
+.article-figure img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fffaf4;
+  box-shadow: 0 10px 26px rgba(70, 53, 38, 0.08);
+}
+
+.article-figure figcaption {
+  margin-top: 8px;
+  color: #8e5f4f;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
 .study-note {
   margin-top: 32px;
   border: 1px solid var(--line);
