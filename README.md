@@ -44,7 +44,9 @@
 │   │   └── index.html
 │   ├── short-writing-practice/
 │   │   └── index.html
-│   └── communication-details/
+│   ├── communication-details/
+│   │   └── index.html
+│   └── future-expectations/
 │       └── index.html
 ├── .gitattributes
 └── .nojekyll
@@ -66,6 +68,7 @@
 - 阅读之后的余味
 - 短文练习
 - 沟通里的细节
+- 对未来的期望
 
 ## 发布方式
 
